@@ -8,31 +8,32 @@ import { AddEditPost } from './pages/AddEditPost'
 import { Details } from './pages/Details'
 import { NotFound } from './pages/NotFound'
 import { PwReset } from './pages/PwReset'
-import { SignIn } from './pages/SignIn'
-import { SignUp } from './pages/SignUp'
+import { SignInUp } from './pages/SignInUp'
 import { Profile } from './pages/Profile'
 import { NavBar } from './components/NavBar'
+import { UserProvider } from './context/userContext'
 
 function App() {
 
   return (
     <BrowserRouter>
-      <div>
-        <NavBar />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='about' element={<About />} />
-          <Route path='details/:id' element={<Details />} />
-          <Route path='create' element={<AddEditPost />} />
-          <Route path='update/:id' element={<AddEditPost />} />
-          <Route path='signin' element={<SignIn />} />
-          <Route path='singup' element={<SignUp />} />
-          <Route path='pwreset' element={<PwReset />} />
-          <Route path='profile' element={<Profile />} />
+      <UserProvider>
+        <div>
+          <NavBar />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='about' element={<About />} />
+            <Route path='details/:id' element={<Details />} />
+            <Route path='create' element={<AddEditPost />} />
+            <Route path='update/:id' element={<AddEditPost />} />
+            <Route path='signinup/:type' element={<SignInUp />} />
+            <Route path='pwreset' element={<PwReset />} />
+            <Route path='profile' element={<Profile />} />
 
-          <Route path='*' element={<NotFound />} />
-        </Routes>
-      </div>
+            <Route path='*' element={<NotFound />} />
+          </Routes>
+        </div>
+      </UserProvider>  
     </BrowserRouter>
   )
 }
